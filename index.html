@@ -22,7 +22,7 @@
     --grid-line: rgba(124,150,171,0.18);
   }
   *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;}
+  html,body{margin:0;padding:0;scroll-behavior:smooth;}
   body{
     background:
       linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0/100% 44px,
@@ -231,11 +231,127 @@
   .trust-item p{margin:0;font-size:13px;color:var(--ink-dim);line-height:1.8;}
   .trust-item strong{color:var(--ink);display:block;font-size:14.5px;margin-bottom:4px;}
 
-  footer{
-    border-top:1px solid var(--line);padding:30px 20px;
-    max-width:1180px;margin:0 auto;
-    display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;
-    color:var(--ink-dim);font-size:12.5px;
+  /* ===== Footer Contact Section ===== */
+  .footer-contact{
+    background:var(--bg-panel);
+    border-top:1px solid var(--line);
+    padding:50px 20px 30px;
+  }
+  .footer-container{
+    max-width:1180px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:1.2fr 1fr 1fr;
+    gap:40px;
+  }
+  .footer-col h4{
+    font-family:'Vazirmatn',sans-serif;
+    font-size:17px;
+    font-weight:700;
+    color:var(--amber);
+    margin:0 0 18px;
+    position:relative;
+    padding-bottom:8px;
+  }
+  .footer-col h4::after{
+    content:'';
+    position:absolute;
+    bottom:0;
+    right:0;
+    width:35px;
+    height:2px;
+    background:var(--amber);
+  }
+  .footer-col p{
+    color:var(--ink-dim);
+    font-size:14px;
+    line-height:1.9;
+    margin:0 0 15px;
+  }
+  .contact-list{
+    list-style:none;
+    padding:0;
+    margin:0;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .contact-item{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    font-size:14px;
+    color:var(--ink);
+  }
+  .contact-icon{
+    color:var(--amber);
+    font-size:18px;
+    line-height:1;
+    margin-top:2px;
+  }
+  .phone-group{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+  }
+  .phone-link{
+    color:var(--ink);
+    font-family:'Vazirmatn',sans-serif;
+    font-weight:600;
+    direction:ltr;
+    display:inline-block;
+    transition:color .15s ease;
+  }
+  .phone-link:hover{color:var(--amber);}
+  .contact-btns{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-top:10px;
+  }
+  .btn-call{
+    background:var(--amber);
+    color:#1b1f23;
+    font-weight:700;
+    padding:12px 18px;
+    text-align:center;
+    font-size:14px;
+    border:none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    transition:background .15s ease;
+  }
+  .btn-call:hover{background:var(--amber-dim);color:#fff;}
+  .btn-whatsapp{
+    background:#25D366;
+    color:#fff;
+    font-weight:700;
+    padding:12px 18px;
+    text-align:center;
+    font-size:14px;
+    border:none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    transition:opacity .15s ease;
+  }
+  .btn-whatsapp:hover{opacity:0.9;}
+
+  .footer-bottom{
+    border-top:1px solid var(--line);
+    padding:20px;
+    max-width:1180px;
+    margin:0 auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:14px;
+    color:var(--ink-dim);
+    font-size:12.5px;
   }
 
   /* ===== Cart drawer ===== */
@@ -321,6 +437,7 @@
     .hero{grid-template-columns:1fr;padding-top:40px;}
     .search-box{display:none;}
     .trust{grid-template-columns:repeat(2,1fr);}
+    .footer-container{grid-template-columns:1fr;gap:30px;}
   }
   :focus-visible{outline:2px solid var(--amber);outline-offset:2px;}
 </style>
@@ -343,7 +460,7 @@
     <nav>
       <a href="#catalog">محصولات</a>
       <a href="#trust">چرا ما؟</a>
-      <a href="#footer">تماس</a>
+      <a href="#contact">تماس با ما</a>
     </nav>
     <div class="header-actions">
       <div class="search-box">
@@ -365,7 +482,7 @@
     <p>موجودی به‌روز قطعات یدکی تخصصی خودروهای چینی — چری، فونیکس، جک و لیفان — با کد فنی مشخص، استعلام تطبیق خودرو و ارسال سریع از انبار مرکزی.</p>
     <div class="hero-actions">
       <a href="#catalog" class="btn-primary">مشاهده محصولات</a>
-      <a href="#trust" class="btn-ghost">استعلام تطبیق قطعه</a>
+      <a href="#contact" class="btn-ghost">استعلام تطبیق قطعه</a>
     </div>
   </div>
   <div class="hero-panel">
@@ -409,9 +526,70 @@
   </div>
 </section>
 
-<footer id="footer">
-  <div>© بازرگانی جان‌محمدی (JTG PART) — قطعات یدکی خودروهای چینی</div>
-  <div>تامین قطعات تخصصی چری، فونیکس، جک و لیفان</div>
+<!-- ===== Footer Contact Section ===== -->
+<footer class="footer-contact" id="contact">
+  <div class="footer-container">
+    
+    <div class="footer-col">
+      <h4>بازرگانی جان‌محمدی (JTG PART)</h4>
+      <p>مرکز تخصصی تامین و توزیع قطعات یدکی اصلی و اورجینال خودروهای چینی شامل برندهای چری، فونیکس، جک و لیفان با بالاترین کیفیت و ضمانت اصالت.</p>
+      <p style="color:var(--steel-light); font-size:13px;">ساعت کاری: شنبه تا چهارشنبه ۹:۰۰ الی ۱۸:۰۰ | پنجشنبه‌ها ۹:۰۰ الی ۱۴:۰۰</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>اطلاعات تماس</h4>
+      <ul class="contact-list">
+        <li class="contact-item">
+          <span class="contact-icon">📱</span>
+          <div>
+            <span>شماره‌های همراه:</span>
+            <div class="phone-group" style="margin-top:4px;">
+              <a href="tel:09124792499" class="phone-link">۰۹۱۲ ۴۷۹ ۲۴۹۹</a>
+              <a href="tel:09351912499" class="phone-link">۰۹۳۵ ۱۹۱ ۲۴۹۹</a>
+            </div>
+          </div>
+        </li>
+        <li class="contact-item">
+          <span class="contact-icon">☎️</span>
+          <div>
+            <span>تلفن‌های ثابت فروشگاه:</span>
+            <div class="phone-group" style="margin-top:4px;">
+              <a href="tel:02136908670" class="phone-link">۰۲۱ ۳۶۹۰ ۸۶۷۰</a>
+              <a href="tel:02136908602" class="phone-link">۰۲۱ ۳۶۹۰ ۸۶۰۲</a>
+            </div>
+          </div>
+        </li>
+        <li class="contact-item">
+          <span class="contact-icon">📍</span>
+          <div>
+            <span>آدرس فروشگاه:</span><br>
+            <span style="color:var(--ink-dim); line-height:1.6; display:block; margin-top:3px;">
+              تهران - خیابان ملت - پاساژ ولیعصر - طبقه اول - پلاک 11
+            </span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>ارتباط سریع</h4>
+      <p>جهت استعلام سریع موجودی قطعات یا مشاوره قبل از خرید می‌توانید مستقیماً تماس بگیرید یا در واتساپ پیام دهید:</p>
+      <div class="contact-btns">
+        <a href="tel:09124792499" class="btn-call">
+          <span>📞</span> تماس تلفنی مستقیم
+        </a>
+        <a href="https://wa.me/989124792499" target="_blank" class="btn-whatsapp">
+          <span>💬</span> مشاوره و سفارش در واتساپ
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <div>© بازرگانی جان‌محمدی (JTG PART) — تمامی حقوق محفوظ است.</div>
+    <div>تامین قطعات تخصصی چری، فونیکس، جک و لیفان</div>
+  </div>
 </footer>
 
 <div class="overlay" id="overlay"></div>
@@ -432,7 +610,8 @@
 
 <div class="modal" id="checkoutModal">
   <div class="modal-box" id="modalBox">
-    </div>
+    <!-- filled by JS -->
+  </div>
 </div>
 
 <script>
