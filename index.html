@@ -20,7 +20,7 @@
     }
 
     /* ==========================================
-       ۱. استایل‌های پرده ورودی و عناصر خودرویی
+       ۱. پرده ورودی و انیمیشن ماشین‌های واقعی
     ========================================== */
     #intro-screen {
       position: fixed;
@@ -42,13 +42,13 @@
       color: #ffffff;
       font-size: 24px;
       font-weight: bold;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
       letter-spacing: 1px;
       text-align: center;
       z-index: 2;
     }
 
-    /* انیمیشن شناور شدن قطعات (شاتون، واشر، چراغ) */
+    /* قطعات خودرویی شناور در زمینه */
     .floating-parts {
       position: absolute;
       width: 100%;
@@ -66,11 +66,10 @@
       animation: floatPart 6s infinite ease-in-out;
     }
 
-    /* تنظیم موقعیت قطعات مختلف */
-    .part-1 { top: 15%; left: 10%; animation-delay: 0s; }  /* شاتون/پیستون */
-    .part-2 { top: 20%; right: 12%; animation-delay: 1.5s; } /* واشر */
-    .part-3 { bottom: 20%; left: 15%; animation-delay: 3s; }  /* چراغ */
-    .part-4 { bottom: 25%; right: 10%; animation-delay: 4.5s; } /* شاتون */
+    .part-1 { top: 15%; left: 10%; animation-delay: 0s; }
+    .part-2 { top: 20%; right: 12%; animation-delay: 1.5s; }
+    .part-3 { bottom: 20%; left: 15%; animation-delay: 3s; }
+    .part-4 { bottom: 25%; right: 10%; animation-delay: 4.5s; }
 
     @keyframes floatPart {
       0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.2; }
@@ -80,19 +79,19 @@
     .stage {
       position: relative;
       width: 100%;
-      max-width: 700px;
-      height: 250px;
+      max-width: 850px;
+      height: 320px;
       display: flex;
       justify-content: space-around;
       align-items: center;
       z-index: 2;
     }
 
-    .car {
+    /* باکس تصاویر ماشین‌ها */
+    .car-box {
       position: relative;
-      width: 200px;
-      height: 90px;
-      border-radius: 15px 15px 5px 5px;
+      width: 340px;
+      text-align: center;
       transform: scale(0.2);
       opacity: 0;
       animation: driveIn 1.4s forwards ease-out;
@@ -103,66 +102,54 @@
       100% { transform: scale(1); opacity: 1; }
     }
 
-    /* پورشه پانامرا آبی */
-    .porsche {
-      background: linear-gradient(to bottom, #003366, #001f3f);
-      border-top: 2px solid #0055a5;
-      box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
-    }
-    .porsche::after {
-      content: 'PORSCHE PANAMERA';
-      position: absolute;
-      top: -25px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: #ffffff;
-      font-size: 11px;
-      white-space: nowrap;
+    .car-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0px 10px 15px rgba(255, 255, 255, 0.1));
     }
 
-    /* بنز CLS سفید */
-    .benz {
-      background: linear-gradient(to bottom, #ffffff, #dcdcdc);
-      border-top: 2px solid #ffffff;
-      box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
-    }
-    .benz::after {
-      content: 'BENZ CLS';
-      position: absolute;
-      top: -25px;
-      left: 50%;
-      transform: translateX(-50%);
+    .car-label {
       color: #ffffff;
-      font-size: 11px;
-      white-space: nowrap;
+      font-size: 13px;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+      font-weight: bold;
     }
 
-    /* چراغ‌های جلو */
+    /* افکت چراغ‌های نور بالا روی عکس واقعی */
     .headlight {
       position: absolute;
-      bottom: 18px;
-      width: 28px;
-      height: 18px;
-      background-color: #fff;
+      width: 22px;
+      height: 15px;
+      background-color: #ffffff;
       border-radius: 50%;
-      box-shadow: 0 0 10px #fff;
+      opacity: 0;
+      pointer-events: none;
     }
-    .headlight.left { left: 15px; }
-    .headlight.right { right: 15px; }
 
-    /* افکت نور بالا (Flash) */
+    /* موقعیت چراغ‌های پورشه */
+    .porsche-box .headlight.left { top: 52%; left: 20%; }
+    .porsche-box .headlight.right { top: 52%; right: 20%; }
+
+    /* موقعیت چراغ‌های بنز */
+    .benz-box .headlight.left { top: 50%; left: 18%; }
+    .benz-box .headlight.right { top: 50%; right: 18%; }
+
+    /* چشمک زدن نور بالا */
     .flash-lights .headlight {
+      opacity: 1;
       animation: flashAnimation 0.25s infinite alternate;
     }
 
     @keyframes flashAnimation {
       0% {
         background-color: #ffffff;
-        box-shadow: 0 0 20px #ffffff, 0 0 50px #ffffff, 0 0 90px #ffffff;
+        box-shadow: 0 0 20px #ffffff, 0 0 50px #ffffff, 0 0 100px #ffffff;
       }
       100% {
         background-color: #ffffff;
-        box-shadow: 0 0 60px #ffffff, 0 0 120px #ffffff, 0 0 180px #ffffff;
+        box-shadow: 0 0 60px #ffffff, 0 0 130px #ffffff, 0 0 220px #ffffff;
       }
     }
 
@@ -172,7 +159,7 @@
     }
 
     /* ==========================================
-       ۲. استایل‌های اصلی سایت (تم مشکی و سفید)
+       ۲. استایل‌های اصلی سایت
     ========================================== */
     header {
       background-color: #000000;
@@ -185,7 +172,6 @@
     header h1 {
       font-size: 28px;
       margin-bottom: 10px;
-      color: #ffffff;
     }
 
     header p {
@@ -226,7 +212,6 @@
       color: #cccccc;
     }
 
-    /* فوتر سایت */
     footer {
       background-color: #000000;
       color: #ffffff;
@@ -269,37 +254,37 @@
 </head>
 <body>
 
-  <!-- پرده ورودی به همراه قطعات خودرویی شناور -->
+  <!-- پرده ورودی با تصاویر واقعی PNG -->
   <div id="intro-screen">
     <div class="floating-parts">
-      <!-- شاتون و پیستون -->
-      <div class="part-icon part-1" title="شاتون">⚙️</div>
-      <!-- واشر سرسیلندر -->
-      <div class="part-icon part-2" title="واشر سرسیلندر">⭕</div>
-      <!-- چراغ ماشین -->
-      <div class="part-icon part-3" title="چراغ خودرو">💡</div>
-      <!-- شاتون -->
-      <div class="part-icon part-4" title="شاتون">🔧</div>
+      <div class="part-icon part-1">⚙️</div>
+      <div class="part-icon part-2">⭕</div>
+      <div class="part-icon part-3">💡</div>
+      <div class="part-icon part-4">🔧</div>
     </div>
 
     <div class="intro-title">بازرگانی جان‌محمدی (JTG)</div>
 
     <div class="stage">
-      <!-- پورشه پانامرا آبی -->
-      <div class="car porsche" id="porsche">
+      <!-- پورشه پانامرا آبی واقعی -->
+      <div class="car-box porsche-box" id="porsche">
+        <div class="car-label">PORSCHE PANAMERA</div>
+        <img src="https://www.pngmart.com/files/22/Porsche-Panamera-PNG-Isolated-HD-Photo.png" alt="Porsche Panamera" class="car-img">
         <div class="headlight left"></div>
         <div class="headlight right"></div>
       </div>
 
-      <!-- بنز CLS سفید -->
-      <div class="car benz" id="benz">
+      <!-- بنز CLS سفید واقعی -->
+      <div class="car-box benz-box" id="benz">
+        <div class="car-label">BENZ CLS</div>
+        <img src="https://www.pngmart.com/files/22/Mercedes-Benz-CLS-PNG-Clipart.png" alt="Benz CLS" class="car-img">
         <div class="headlight left"></div>
         <div class="headlight right"></div>
       </div>
     </div>
   </div>
 
-  <!-- هدر اصلی سایت -->
+  <!-- هدر سایت -->
   <header>
     <h1>بازرگانی جان‌محمدی (JTG)</h1>
     <p>تأمین و توزیع تخصصی قطعات یدکی خودروهای چینی</p>
@@ -317,7 +302,7 @@
     </div>
   </div>
 
-  <!-- فوتر و اطلاعات تماس -->
+  <!-- فوتر -->
   <footer>
     <div class="footer-grid">
       <div class="footer-section">
@@ -338,25 +323,24 @@
     </div>
   </footer>
 
-  <!-- اسکریپت کنترل انیمیشن -->
   <script>
     window.addEventListener('DOMContentLoaded', () => {
       const introScreen = document.getElementById('intro-screen');
       const porsche = document.getElementById('porsche');
       const benz = document.getElementById('benz');
 
-      // ۱. شروع نور بالا زدن پس از رسیدن ماشین‌ها (۱.۴ ثانیه)
+      // ۱. افکت فلش نور بالا پس از رسیدن ماشین‌ها
       setTimeout(() => {
         porsche.classList.add('flash-lights');
         benz.classList.add('flash-lights');
       }, 1400);
 
-      // ۲. قطع افکت و ورود به سایت اصلی (پس از ۳ ثانیه)
+      // ۲. بستن پرده ورودی و ورود به سایت
       setTimeout(() => {
         porsche.classList.remove('flash-lights');
         benz.classList.remove('flash-lights');
         introScreen.classList.add('fade-out');
-      }, 3000);
+      }, 3200);
     });
   </script>
 
