@@ -117,18 +117,21 @@
 
     .headlight {
       position: absolute;
-      width: 22px;
-      height: 15px;
+      width: 20px;
+      height: 12px;
       background-color: #ffffff;
       border-radius: 50%;
       opacity: 0;
       pointer-events: none;
     }
 
-    .porsche-box .headlight.left { top: 52%; left: 20%; }
-    .porsche-box .headlight.right { top: 52%; right: 20%; }
-    .benz-box .headlight.left { top: 50%; left: 18%; }
-    .benz-box .headlight.right { top: 50%; right: 18%; }
+    /* موقعیت چراغ‌های فونیکس FX */
+    .fx-box .headlight.left { top: 48%; left: 18%; }
+    .fx-box .headlight.right { top: 48%; right: 18%; }
+
+    /* موقعیت چراغ‌های تیگو 8 پرو مکس */
+    .tiggo-box .headlight.left { top: 46%; left: 16%; }
+    .tiggo-box .headlight.right { top: 46%; right: 16%; }
 
     .flash-lights .headlight {
       opacity: 1;
@@ -308,16 +311,18 @@
     <div class="intro-title">بازرگانی جان‌محمدی (JTG)</div>
 
     <div class="stage">
-      <div class="car-box porsche-box" id="porsche">
-        <div class="car-label">PORSCHE PANAMERA</div>
-        <img src="https://www.pngmart.com/files/22/Porsche-Panamera-PNG-Isolated-HD-Photo.png" alt="Porsche Panamera" class="car-img">
+      <!-- فونیکس FX -->
+      <div class="car-box fx-box" id="fownix-fx">
+        <div class="car-label">FOWNIX FX</div>
+        <img src="https://raw.githubusercontent.com/fawaz-al-shammari/omoda-png/main/omoda5.png" alt="Fownix FX" class="car-img">
         <div class="headlight left"></div>
         <div class="headlight right"></div>
       </div>
 
-      <div class="car-box benz-box" id="benz">
-        <div class="car-label">BENZ CLS</div>
-        <img src="https://www.pngmart.com/files/22/Mercedes-Benz-CLS-PNG-Clipart.png" alt="Benz CLS" class="car-img">
+      <!-- تیگو 8 پرو مکس -->
+      <div class="car-box tiggo-box" id="tiggo8">
+        <div class="car-label">TIGGO 8 PRO MAX</div>
+        <img src="https://www.cheryinternational.com/pc/models/tiggo8promax/images/car.png" alt="Tiggo 8 Pro Max" class="car-img">
         <div class="headlight left"></div>
         <div class="headlight right"></div>
       </div>
@@ -347,6 +352,15 @@
         <div class="car-card-name">فونیکس FX (Omoda 5)</div>
         <span class="car-card-btn">ورود به قطعات تخصصی</span>
       </a>
+
+      <!-- کارت تیگو 8 پرو مکس -->
+      <a href="tiggo8-promax.html" class="car-card">
+        <div class="car-card-img-wrapper">
+          <img src="https://www.cheryinternational.com/pc/models/tiggo8promax/images/car.png" alt="تیگو 8 پرو مکس" class="car-card-img">
+        </div>
+        <div class="car-card-name">تیگو 8 پرو مکس</div>
+        <span class="car-card-btn">ورود به قطعات تخصصی</span>
+      </a>
     </div>
   </div>
 
@@ -374,21 +388,30 @@
   <script>
     window.addEventListener('DOMContentLoaded', () => {
       const introScreen = document.getElementById('intro-screen');
-      const porsche = document.getElementById('porsche');
-      const benz = document.getElementById('benz');
+      const fx = document.getElementById('fownix-fx');
+      const tiggo8 = document.getElementById('tiggo8');
 
+      // روشن شدن چراغ‌ها (نور بالا دادن) پس از رسیدن ماشین‌ها
       setTimeout(() => {
-        porsche.classList.add('flash-lights');
-        benz.classList.add('flash-lights');
+        fx.classList.add('flash-lights');
+        tiggo8.classList.add('flash-lights');
       }, 1400);
 
+      // اتمام فلاش و مخفی شدن لایه ورودی
       setTimeout(() => {
-        porsche.classList.remove('flash-lights');
-        benz.classList.remove('flash-lights');
+        fx.classList.remove('flash-lights');
+        tiggo8.classList.remove('flash-lights');
         introScreen.classList.add('fade-out');
+
+        // حذف کامل لایه ورودی از DOM جهت جلوگیری از تداخل در کلیک
+        setTimeout(() => {
+          introScreen.style.display = 'none';
+        }, 1000);
       }, 3200);
     });
   </script>
 
 </body>
 </html>
+```http://googleusercontent.com/generated_image_content/0
+
